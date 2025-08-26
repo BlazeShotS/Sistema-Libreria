@@ -1,8 +1,10 @@
 <form enctype="multipart/form-data" method="post">
-
-    <div class="mb-3">
-        <label for="" class="form-label">Nombre</label>
-        <input type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="Nombre" />
-    </div>
+    {% csrf_token %} <!--Es como una llave que le dice a django que este formulario le pertenece a esta aplicacion-->
+    {% for campo in formulario %} <!--formulario es lo de color naranja que esta en mi views.py-->
+        <div class="mb-3">
+            <label for="" class="form-label">{{campo.label}}</label> <!--viene de mi models el verbose-->
+            <input type="{{campo.field.widget.input_type}}" class="form-control" name="{{campo.name}}" id="" aria-describedby="helpId" placeholder="{{campo.label}}" />
+        </div>
+    {% endfor %}
 
 </form>

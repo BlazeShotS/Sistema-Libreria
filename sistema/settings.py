@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os; #IMPORTAR UTILERIAS del Sistema operativo
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -123,5 +124,8 @@ STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
+
+MEDIA_ROOT = os.path.join(BASE_DIR, '') #Ruta del proyecto donde se guardara la imagen, DONDE SE GUARDA EL ARCHIVO EN EL DISCO O CARPETA
+MEDIA_URL = '/imagenes/' #Aqui es donde se encuentran las imagenes , es decir  COMO SE ACCEDE EN EL NAVEGADOR
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
