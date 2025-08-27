@@ -7,7 +7,7 @@ class Libro(models.Model):
     imagen = models.ImageField(upload_to='imagenes/',verbose_name='Imagen' ,null=True) #imagenes/ es la carpeta que se creara a continuacion
     descripcion = models.TextField(null=True, verbose_name='Descripcion')
 
-    #Para que en la pagina admin , se visualize con estos nombres
+    #Para que en la pagina admin de django, se visualize con estos nombres
     def __str__(self):
         fila = "Título " + self.titulo + " - " + " Descripcion " + self.descripcion
         return fila

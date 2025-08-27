@@ -10,7 +10,7 @@ def nosotros(request):
     return render(request, 'paginas/nosotros.html')
 
 def libros(request):
-    libros = Libro.objects.all() #Obteniendo toda la informacion de libros
+    libros = Libro.objects.all() #Obteniendo toda la informacion de libros , el objects es como el repository en java spring boot
     return render(request, 'libros/index.html',{'libros':libros}) #libros de color naranja sera llamado en el html
 
 def crear(request):
@@ -22,3 +22,8 @@ def crear(request):
 
 def editar(request):
     return render(request, 'libros/editar.html')
+
+def eliminar(request, id):
+    libro = Libro.objects.get(id=id)
+    libro.delete()
+    return redirect('libros')
