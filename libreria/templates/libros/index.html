@@ -33,7 +33,7 @@
                         </td>
                         <td>{{libro.descripcion}}</td>
                         <td>
-                            <a name="" id="" class="btn btn-warning" href="{% url 'editar'%}" role="button">Editar</a> 
+                            <a name="" id="" class="btn btn-warning" href="{% url 'detalle' libro.id %}" role="button">Editar</a> 
                             <a name="" id="" class="btn btn-danger" href="{% url 'eliminar' libro.id %}" role="button">Eliminar</a> <!--eliminar viene del name=eliminar de urls.py de libreria-->
                         </td>
                     </tr>
