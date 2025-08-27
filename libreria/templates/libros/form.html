@@ -16,7 +16,7 @@
             placeholder="{{campo.label}}"
             value="{{ campo.value | default:'' }}" 
             />
-        </div>
+        </div> <!--el value  | default , es para ver si es un formulario de creacion estara vacio , si es de edicion llenara los campos-->
 
         <!--Para errores-->
         <div class="col-12 help_text"> {{campo.errors}}</div>

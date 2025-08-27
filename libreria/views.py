@@ -14,15 +14,18 @@ def libros(request):
     return render(request, 'libros/index.html',{'libros':libros}) #libros de color naranja sera llamado en el html
 
 def crear(request):
-    formulario = LibroForm(request.POST or None, request.FILES or None) #Esto es como que le dice si hay datos en POST usalos no dejes vacio
-    if formulario.is_valid():
+    formulario = LibroForm(request.POST or None, request.FILES or None) #SE CONSTRUYE VACIO,  los campos del formulario , segun el modelo
+    if formulario.is_valid(): #Valida que el formulario no este vacio
         formulario.save() #GUARDO EN LA BD
         return redirect('libros') #Redirige a la vista libros que es el metodo libros de la linea 12
     return render(request, 'libros/crear.html',{'formulario':formulario}) #formulario de color naranja sera colocado en el html
 
 def editar(request, id):
-    libro = Libro.objects.get(id=id)
-    formulario = LibroForm(request.POST or None, request.FILES or None , instance=libro)
+    libro = Libro.objects.get(id=id) #Busca el libro con ese id
+    formulario = LibroForm(request.POST or None, request.FILES or None , instance=libro) # SE CONSTRUYE LLENO , el formulario , los inputs se inicializan ya llenados con los datos de libro que fue colocado en instance
+    if formulario.is_valid() and request.POST: #Si el formulario es valido, que no este vacio  y hay un envio POST
+        formulario.save()
+        return redirect('libros')
     return render(request, 'libros/editar.html',{'formulario': formulario})
 
 def eliminar(request, id):
