@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Libro
 from .forms import LibroForm
@@ -14,7 +14,10 @@ def libros(request):
     return render(request, 'libros/index.html',{'libros':libros}) #libros de color naranja sera llamado en el html
 
 def crear(request):
-    formulario = LibroForm(request.POST or None) #Identificar los elementos que estan enviando atravez del formulario
+    formulario = LibroForm(request.POST or None, request.FILES or None) #Esto es como que le dice si hay datos en POST usalos no dejes vacio
+    if formulario.is_valid():
+        formulario.save() #GUARDO EN LA BD
+        return redirect('libros') #Redirige a la vista libros que es el metodo libros de la linea 12
     return render(request, 'libros/crear.html',{'formulario':formulario}) #formulario de color naranja sera colocado en el html
 
 def editar(request):
