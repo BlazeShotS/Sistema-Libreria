@@ -17,11 +17,11 @@ class Autor(models.Model):
     
     def __str__(self):
         return self.nombre_completo()
-
+    
     class Meta:
         verbose_name='Autor'
         verbose_name_plural= 'Autores'
-        db_table='Autor'
+        db_table='Autor' #Nombre personalizado con el que se creara en la database
         ordering=['apellido_paterno','-apellido_materno'] #Forma descendente
 
 class Libro(models.Model):
