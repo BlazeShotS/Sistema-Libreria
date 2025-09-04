@@ -8,6 +8,11 @@
             <br>
             <img src="{{MEDIA_URL}}/imagenes/{{campo.value}}" width="100px" alt="">
             {% endif %}
+
+            {% if campo.field.widget.input_type == 'select' %}
+                {{ campo }}  <!-- Esto renderiza el <select> automáticamente del autor-->
+            {% else %}
+
             <input 
             type="{{campo.field.widget.input_type}}"
             class="form-control"
@@ -15,7 +20,10 @@
             id="" aria-describedby="helpId"
             placeholder="{{campo.label}}"
             value="{{ campo.value | default:'' }}" 
+            
             />
+            {% endif %}
+
         </div> <!--el value  | default , es para ver si es un formulario de creacion estara vacio , si es de edicion llenara los campos-->
 
         <!--Para errores-->
