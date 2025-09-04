@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block titulo %} Lista de Autores {% endblock %}
+
+
+{% block contenido %}
+<h2 class="titulo-principal">Lista de Autores</h2>
+
+<table class="tabla-autores">
+    <thead class="tabla-cabecera">
+        <tr>
+            <th>Apellido Paterno</th>
+            <th>Apellido Materno</th>
+            <th>Nombre completo</th>
+            <th>Fecha nacimiento</th>
+            <th>Sexo</th>
+            <th>Accion</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for autor in autores %}
+        <tr class="fila-autor">
+            <td>{{ autor.apellido_paterno }}</td>
+            <td>{{ autor.apellido_materno }}</td>
+            <td>{{ autor.nombres }}</td>
+            <td>{{ autor.fecha_nacimiento }}</td>
+            <td>{{ autor.get_sexo_display  }}</td>
+            <td>{{ autor.get_sexo_display  }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3">No hay autores registrados.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

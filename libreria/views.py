@@ -2,12 +2,15 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Libro
 from .forms import LibroForm
+from .models import Autor
+
 
 # Create your views here.
 def inicio(request):
     return render(request, 'paginas/inicio.html')
 def nosotros(request):
     return render(request, 'paginas/nosotros.html')
+
 
 def libros(request):
     libros = Libro.objects.all() #Obteniendo toda la informacion de libros , el objects es como el repository en java spring boot
@@ -32,3 +35,9 @@ def eliminar(request, id):
     libro = Libro.objects.get(id=id)
     libro.delete()
     return redirect('libros')
+
+
+#Para Autor
+def autor(request):
+    autores = Autor.objects.all()
+    return render(request, 'autor/listar.html',{'autores':autores})

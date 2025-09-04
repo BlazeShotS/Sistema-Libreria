@@ -1,0 +1,43 @@
+/* Título */
+.titulo-principal {
+    text-align: center;
+    color: #2c3e50;
+    font-family: Arial, sans-serif;
+    margin-top: 20px;
+}
+
+/* Tabla */
+.tabla-autores {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+}
+
+/* Cabecera */
+.tabla-cabecera {
+    background-color: #34495e;
+    color: white;
+    text-align: left;
+}
+
+/* Filas */
+.fila-autor {
+    background-color: #ecf0f1;
+}
+
+.fila-autor:nth-child(even) {
+    background-color: #bdc3c7;
+}
+
+.fila-autor:hover {
+    background-color: #95a5a6;
+    cursor: pointer;
+}
+
+/* Celdas */
+.tabla-autores th,
+.tabla-autores td {
+    padding: 10px;
+    border: 1px solid #7f8c8d;
+}
