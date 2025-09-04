@@ -1,9 +1,22 @@
 {% extends "base.html" %}
 
-{% block titulo %} Lista de Autores {% endblock %}
+{% block titulo %} Crear Autor {% endblock %}
 
 
 {% block contenido %}
+
+<br>
+<div class="card">
+    <div class="card-header">Crear un libro</div>
+    <div class="card-body">
+        <h4 class="card-title">Datos del libro</h4>
+        {% include 'autor/form.html' %} <!--Incluye TODA la vista-->
+    </div>
+
+    <div class="card-footer text-muted">
+        
+    </div>
+</div>
 
 
 {% endblock %}

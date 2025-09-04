@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Libro
-from .forms import LibroForm
-from .models import Autor
+from .models import Libro , Autor
+from .forms import LibroForm , AutorForm
 
 
 # Create your views here.
@@ -41,3 +40,11 @@ def eliminar(request, id):
 def autor(request):
     autores = Autor.objects.all()
     return render(request, 'autor/listar.html',{'autores':autores})
+
+def crearAutor(request):
+    formularioAutor = AutorForm(request.POST or None)
+    if formularioAutor.is_valid():
+        formularioAutor.save()
+        return redirect('autor')
+    return render(request, 'autor/crear.html',{'formularioAutor':formularioAutor})
+
