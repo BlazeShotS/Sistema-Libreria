@@ -19,7 +19,7 @@ def crear(request):
     formulario = LibroForm(request.POST or None, request.FILES or None) #SE CONSTRUYE VACIO,  los campos del formulario , segun el modelo
     if formulario.is_valid(): #Valida que el formulario no este vacio
         formulario.save() #GUARDO EN LA BD
-        return redirect('libros') #Redirige a la vista libros que es el metodo libros de la linea 12
+        return redirect('libros') #Redirige a la vista libros que es el que esta en el urls.py libros de la linea 12
     return render(request, 'libros/crear.html',{'formulario':formulario}) #formulario de color naranja sera colocado en el html
 
 def editar(request, id):
@@ -45,6 +45,6 @@ def crearAutor(request):
     formularioAutor = AutorForm(request.POST or None)
     if formularioAutor.is_valid():
         formularioAutor.save()
-        return redirect('autor')
+        return redirect('ListarAutor')
     return render(request, 'autor/crear.html',{'formularioAutor':formularioAutor})
 

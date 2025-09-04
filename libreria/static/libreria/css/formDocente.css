@@ -1,0 +1,71 @@
+/* Contenedor del formulario */
+.form-autor {
+    width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 2px solid #34495e;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+/* Cada campo */
+.campo-formulario {
+    margin-bottom: 15px;
+}
+
+/* Etiqueta */
+.label-formulario {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* Inputs */
+.input-formulario {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Mensajes de error */
+.error-formulario {
+    color: red;
+    font-size: 12px;
+    margin-top: 3px;
+}
+
+/* Botones */
+.botones-formulario {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+
+.btn-enviar {
+    padding: 8px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-enviar:hover {
+    background-color: #45a049;
+}
+
+.btn-volver {
+    padding: 8px 15px;
+    background-color: #2196F3;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn-volver:hover {
+    background-color: #1976D2;
+}

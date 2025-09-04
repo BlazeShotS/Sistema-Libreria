@@ -1,6 +1,5 @@
 from django import forms
-from .models import Libro
-from .models import Autor
+from .models import Libro, Autor
 
 #La clase LibroForm es como un helper que mezcla
 #Validacion automatica de datos, Generacion del formulario HTML y Conexion al modelo libro para GUARDAR o EDITAR que por dentro usa OBJECTS

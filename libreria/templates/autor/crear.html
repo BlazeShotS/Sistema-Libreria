@@ -4,19 +4,19 @@
 
 
 {% block contenido %}
-
 <br>
-<div class="card">
-    <div class="card-header">Crear un libro</div>
-    <div class="card-body">
-        <h4 class="card-title">Datos del libro</h4>
-        {% include 'autor/form.html' %} <!--Incluye TODA la vista-->
+<div class="contenedor-autor">
+    <div class="header-autor">Registrar un autor</div>
+    <div class="body-autor">
+        <h4 class="titulo-autor">Datos del Autor</h4>
+        {% include 'autor/form.html' %} <!--Incluye el formulario-->
     </div>
+    
+    <div class="footer-autor">
 
-    <div class="card-footer text-muted">
-        
     </div>
 </div>
+
 
 
 {% endblock %}
