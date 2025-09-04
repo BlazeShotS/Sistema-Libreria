@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block titulo %} Editar Autor {% endblock %}
+
+
+{% block contenido %}
+<br>
+<div class="contenedor-autor">
+    <div class="header-autor">Editar un autor</div>
+    <div class="body-autor">
+        <h4 class="titulo-autor">Datos del Autor</h4>
+        {% include 'autor/form.html' %} <!--Incluye el formulario-->
+    </div>
+    
+    <div class="footer-autor">
+
+    </div>
+</div>
+
+
+
+{% endblock %}

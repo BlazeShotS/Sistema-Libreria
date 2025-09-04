@@ -45,6 +45,13 @@ def crearAutor(request):
     formularioAutor = AutorForm(request.POST or None)
     if formularioAutor.is_valid():
         formularioAutor.save()
-        return redirect('ListarAutor')
+        return redirect('ListarAutores')
     return render(request, 'autor/crear.html',{'formularioAutor':formularioAutor})
 
+def editarAutor(request, id):
+    autor = Autor.objects.get(id=id)
+    formularioAutor = AutorForm(request.POST or None, instance=autor)
+    if formularioAutor.is_valid() and request.POST:
+        formularioAutor.save()
+        return redirect('ListarAutores')
+    return render(request, 'autor/editar.html',{'formularioAutor': formularioAutor})

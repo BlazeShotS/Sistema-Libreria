@@ -12,8 +12,9 @@ urlpatterns = [
     path('eliminar/<int:id>', views.eliminar, name='eliminar'), #el id, tiene que coincidir con el de mi metodo eliminnar el id, tal cual
     path('libros/editar/<int:id>', views.editar, name='detalle'),
 
-    path('autor/', views.autor, name='ListarAutor'),
-    path('autor/crear', views.crearAutor, name='CrearAutor')
+    path('autor', views.autor, name='ListarAutores'),
+    path('autor/crear', views.crearAutor, name='CrearAutor'),
+    path('autor/editar/<int:id>', views.editarAutor, name='EditarAutor')
 
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) #PARA LAS IMAGENES , SE PUEDAN MOSTRAR EN MI PAGINA

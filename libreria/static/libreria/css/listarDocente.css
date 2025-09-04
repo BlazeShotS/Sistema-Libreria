@@ -41,3 +41,35 @@
     padding: 10px;
     border: 1px solid #7f8c8d;
 }
+
+
+
+/* Botón Editar */
+.btn-editar {
+    padding: 6px 12px;
+    background-color: #2980b9; /* Azul profesional */
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: background 0.3s;
+}
+
+.btn-editar:hover {
+    background-color: #1c5980;
+}
+
+/* Botón Eliminar */
+.btn-eliminar {
+    padding: 6px 12px;
+    background-color: #e74c3c; /* Rojo elegante */
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: background 0.3s;
+}
+
+.btn-eliminar:hover {
+    background-color: #c0392b;
+}
