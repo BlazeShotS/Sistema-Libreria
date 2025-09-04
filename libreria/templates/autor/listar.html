@@ -30,7 +30,7 @@
             <td>{{ autor.get_sexo_display  }}</td>
             <td>
                 <a name="" id="" class="btn-editar" href="{% url 'EditarAutor' autor.id %}" role="button">Editar</a> 
-                <a name="" id="" class="btn-eliminar" href="" role="button">Eliminar</a> <!--eliminar viene del name=eliminar de urls.py de libreria-->
+                <a name="" id="" class="btn-eliminar" href="{% url 'EliminarAutor' autor.id %}" role="button">Eliminar</a> <!--eliminar viene del name=eliminar de urls.py de libreria-->
             </td>
         </tr>
         {% empty %}

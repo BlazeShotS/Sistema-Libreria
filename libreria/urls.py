@@ -14,7 +14,9 @@ urlpatterns = [
 
     path('autor', views.autor, name='ListarAutores'),
     path('autor/crear', views.crearAutor, name='CrearAutor'),
-    path('autor/editar/<int:id>', views.editarAutor, name='EditarAutor')
+    path('autor/editar/<int:id>', views.editarAutor, name='EditarAutor'),
+    path('autor/eliminar/<int:id>', views.eliminarAutor, name='EliminarAutor')
+
 
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) #PARA LAS IMAGENES , SE PUEDAN MOSTRAR EN MI PAGINA
