@@ -9,11 +9,11 @@ class Usuario(models.Model):
         ('CLIENT','Cliente')
     )
 
-    nombre = models.CharField(max_length=50)
-    apellido = models.CharField(max_length=50)
-    edad = models.PositiveIntegerField()
-    email = models.EmailField(unique=True)
-    password = models.CharField(max_length=128)
+    nombre = models.CharField(max_length=50, verbose_name='Nombre Completo')
+    apellido = models.CharField(max_length=50, verbose_name='Apellido completo')
+    edad = models.PositiveIntegerField(verbose_name='Ingrese su edad')
+    email = models.EmailField(unique=True, verbose_name='Ingrese su email')
+    password = models.CharField(max_length=128, verbose_name='Ingrese su password')
     rol = models.CharField(max_length=10, choices=ROLES, default='CLIENT')
 
     def save(self, *args, **kwargs):
@@ -34,7 +34,7 @@ class Usuario(models.Model):
         return self.nombre_completo()
     
 
-    class Meta:
+    class Meta:        
         verbose_name='Usuario'
         verbose_name_plural= 'Usuarios'
         db_table='usuario' #Nombre personalizado con el que se creara en la database

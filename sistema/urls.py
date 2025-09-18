@@ -20,5 +20,6 @@ from django.urls import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('libreria.urls')), #accediendo a todo lo que tiene libreria.urls
+    path('', include('libreria.urls')), #accediendo a todo lo que tiene libreria.urls, lo que hace django es buscar un archivo urls.py dentro de libreria
+    path('', include('usuarios.urls'))
 ]

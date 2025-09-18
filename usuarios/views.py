@@ -6,9 +6,9 @@ from .forms import UsuarioForm
 
 # Create your views here.
 
-def crearAutor(request):
+def crearUsuario(request):
     formularioUsuario = UsuarioForm(request.POST or None)
     if formularioUsuario.is_valid():
         formularioUsuario.save()
         return redirect('')
-    return render(request, '',{'':formularioAutor})
+    return render(request, 'usuarios/crear.html',{'formularioUsuario':formularioUsuario})

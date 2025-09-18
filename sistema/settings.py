@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'libreria' #Agrego libreria tal cual esta el nombre de mi carpeta
+    'libreria', #Agrego libreria tal cual esta el nombre de mi carpeta
+    'usuarios'
 ]
 
 MIDDLEWARE = [
