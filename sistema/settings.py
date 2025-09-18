@@ -56,7 +56,7 @@ ROOT_URLCONF = 'sistema.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates"], #Agrege lo que esta dentro del arreglo para que apunte a base.html y esa plantilla pueda ser llamado desde cualquier app,  es decir busca plantilla desde la carpeta global
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

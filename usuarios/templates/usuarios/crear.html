@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block titulo %} Registro {% endblock %}
+
+{% block contenido %}
+
+<br>
+<div class="card">
+    <div class="card-header">Registrarse usuario</div>
+    <div class="card-body">
+        {% include 'usuarios/form.html' %} <!--Incluye TODA la vista-->
+    </div>
+
+    <div class="card-footer text-muted">
+        
+    </div>
+</div>
+
+{% endblock %}

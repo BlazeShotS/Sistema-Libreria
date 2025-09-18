@@ -1,0 +1,37 @@
+<form enctype="multipart/form-data" method="post">
+    {% csrf_token %} <!--Es como una llave que le dice a django que este formulario le pertenece a esta aplicacion-->
+    {% for campo in formulario %} <!--formulario es lo de color naranja que esta en mi views.py-->
+        
+        <div class="mb-3">
+            <label for="" class="form-label">{{campo.label}}</label> <!--esto es del verbose_name-->
+            {% if campo.field.widget.input_type == 'file' and campo.value %} <!--Si es algun tipo de archivo como imagen-->
+            <br>
+            <img src="{{MEDIA_URL}}/imagenes/{{campo.value}}" width="100px" alt="">
+            {% endif %}
+
+            {% if campo.field.widget.input_type == 'select' %}
+                {{ campo }}  <!-- Esto renderiza el <select> automáticamente del autor-->
+            {% else %}
+
+            <input 
+            type="{{campo.field.widget.input_type}}"
+            class="form-control"
+            name="{{campo.name}}"
+            id="" aria-describedby="helpId"
+            placeholder="{{campo.label}}"
+            value="{{ campo.value | default:'' }}" 
+            
+            />
+            {% endif %}
+
+        </div> <!--el value  | default , es para ver si es un formulario de creacion estara vacio , si es de edicion llenara los campos-->
+
+        <!--Para errores-->
+        <div class="col-12 help_text"> {{campo.errors}}</div>
+
+    {% endfor %}
+
+    <input name="" id="" class="btn btn-success" type="submit" value="Enviar Informacion"/>
+    <a name="" id="" class="btn btn-primary" href="{% url 'libros' %}" role="button" >Volver</a>
+    
+</form>
