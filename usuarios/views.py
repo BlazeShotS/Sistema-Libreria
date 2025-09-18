@@ -10,5 +10,5 @@ def crearUsuario(request):
     formularioUsuario = UsuarioForm(request.POST or None)
     if formularioUsuario.is_valid():
         formularioUsuario.save()
-        return redirect('')
+        return redirect('libreria:inicio')
     return render(request, 'usuarios/crear.html',{'formularioUsuario':formularioUsuario})

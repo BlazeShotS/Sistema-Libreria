@@ -19,7 +19,7 @@ def crear(request):
     formulario = LibroForm(request.POST or None, request.FILES or None) #SE CONSTRUYE VACIO,  los campos del formulario , segun el modelo
     if formulario.is_valid(): #Valida que el formulario no este vacio
         formulario.save() #GUARDO EN LA BD
-        return redirect('libros') #Redirige a la vista libros que es el que esta en el urls.py 
+        return redirect('libreria:libros') #Redirige a la vista libros que es el que esta en el urls.py 
     return render(request, 'libros/crear.html',{'formulario':formulario}) #formulario de color naranja sera colocado en el html
 
 def editar(request, id):
@@ -27,13 +27,13 @@ def editar(request, id):
     formulario = LibroForm(request.POST or None, request.FILES or None , instance=libro) # SE CONSTRUYE LLENO , el formulario , los inputs se inicializan ya llenados con los datos de libro que fue colocado en instance
     if formulario.is_valid() and request.POST: #Si el formulario es valido, que no este vacio  y hay un envio POST
         formulario.save()
-        return redirect('libros')
+        return redirect('libreria:libros')
     return render(request, 'libros/editar.html',{'formulario': formulario})
 
 def eliminar(request, id):
     libro = Libro.objects.get(id=id)
     libro.delete()
-    return redirect('libros')
+    return redirect('libreria:libros')
 
 
 #Para Autor
@@ -45,7 +45,7 @@ def crearAutor(request):
     formularioAutor = AutorForm(request.POST or None)
     if formularioAutor.is_valid():
         formularioAutor.save()
-        return redirect('ListarAutores')
+        return redirect('libreria:ListarAutores')
     return render(request, 'autor/crear.html',{'formularioAutor':formularioAutor})
 
 def editarAutor(request, id):
@@ -53,10 +53,10 @@ def editarAutor(request, id):
     formularioAutor = AutorForm(request.POST or None, instance=autor)
     if formularioAutor.is_valid() and request.POST:
         formularioAutor.save()
-        return redirect('ListarAutores')
+        return redirect('libreria:ListarAutores')
     return render(request, 'autor/editar.html',{'formularioAutor': formularioAutor})
 
 def eliminarAutor(request, id):
     autor = Autor.objects.get(id=id)
     autor.delete()
-    return redirect('ListarAutores')
+    return redirect('libreria:ListarAutores')

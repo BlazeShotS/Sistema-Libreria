@@ -22,11 +22,11 @@
 
     <nav class="navbar navbar-expand navbar-dark bg-secondary">
         <div class="nav navbar-nav">
-            <a class="nav-item nav-link active" href="{% url 'inicio'%}">Inicio </a>
-            <a class="nav-item nav-link active" href="{% url 'libros'%}">Libros </a>
-            <a class="nav-item nav-link active" href="{% url 'ListarAutores'%}">Autor </a>
+            <a class="nav-item nav-link active" href="{% url 'libreria:inicio'%}">Inicio </a>
+            <a class="nav-item nav-link active" href="{% url 'libreria:libros'%}">Libros </a>
+            <a class="nav-item nav-link active" href="{% url 'libreria:ListarAutores'%}">Autor </a>
             <a class="nav-item nav-link active" href="{% url 'crearUsuario'%}">Crear Cuenta </a>
-            <a class="nav-item nav-link active" href="{% url 'nosotros'%}">Nosotros </a>
+            <a class="nav-item nav-link active" href="{% url 'libreria:nosotros'%}">Nosotros </a>
         </div>
     </nav>
     <br>
@@ -55,10 +55,10 @@
                 <div class="col-md-4 mb-3">
                     <h5>Enlaces rápidos</h5>
                     <ul class="list-unstyled">
-                        <li><a href="{% url 'inicio' %}" class="text-decoration-none text-light">Inicio</a></li>
-                        <li><a href="{% url 'libros' %}" class="text-decoration-none text-light">Libros</a></li>
-                        <li><a href="{% url 'ListarAutores' %}" class="text-decoration-none text-light">Autores</a></li>
-                        <li><a href="{% url 'nosotros' %}" class="text-decoration-none text-light">Nosotros</a></li>
+                        <li><a href="{% url 'libreria:inicio' %}" class="text-decoration-none text-light">Inicio</a></li>
+                        <li><a href="{% url 'libreria:libros' %}" class="text-decoration-none text-light">Libros</a></li>
+                        <li><a href="{% url 'libreria:ListarAutores' %}" class="text-decoration-none text-light">Autores</a></li>
+                        <li><a href="{% url 'libreria:nosotros' %}" class="text-decoration-none text-light">Nosotros</a></li>
                     </ul>
                 </div>
 

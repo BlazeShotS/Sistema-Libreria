@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from django.urls import include
 
-urlpatterns = [
+urlpatterns = [ #Al poner aca las urls de cada app , hago de que sea accesible las rutas de una app a otra , es decir una app sus rutas pueden ser usadas en otra app
     path('admin/', admin.site.urls),
     path('', include('libreria.urls')), #accediendo a todo lo que tiene libreria.urls, lo que hace django es buscar un archivo urls.py dentro de libreria
     path('', include('usuarios.urls'))

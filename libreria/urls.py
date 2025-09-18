@@ -3,6 +3,8 @@ from . import views
 from django.conf import settings
 from django.contrib.staticfiles.urls import static
 
+app_name = 'libreria' #Define un namespace , cosa que si uso estas rutas en otras app , ya sabre de que app viene
+
 urlpatterns = [
     path('', views.inicio, name='inicio'), #name='inicio' , ese inicio tengo que poner en mi href del html o ruta mejor dicho
     path('nosotros', views.nosotros, name= 'nosotros'),
