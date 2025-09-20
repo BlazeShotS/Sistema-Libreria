@@ -17,7 +17,7 @@ def crearUsuario(request):
 def loginUsuario(request):
     form = LoginForm(request.POST or None)
     if request.method == "POST" and form.is_valid():
-        email = form.cleaned_data['email']
+        email = form.cleaned_data['email'] #ese email viene de forms.py que fue declarado como email
         password = form.cleaned_data['password']
 
         try:
@@ -29,7 +29,7 @@ def loginUsuario(request):
         # Verificar la contraseña con el método del modelo
         if usuario.check_password(password):
             # Guardar sesión
-            request.session['usuario_id'] = usuario.id
+            request.session['usuario_id'] = usuario.id #usuario.id , usuario.nombre , usuario.rol son los atributos del objeto que estoy accediendo, es como el getter pero aca en python no se usa getter se accede mediante el atributo y eso es como un getter 
             request.session['usuario_nombre'] = usuario.nombre
             request.session['usuario_rol'] = usuario.rol
 
