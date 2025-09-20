@@ -16,7 +16,7 @@
     {% endfor %}
 
     <div class="botones-formulario">
-        <input class="btn-enviar" type="submit" value="Enviar Información"/>
+        <input class="btn-enviar" type="submit" value="Registrarse"/>
         <a class="btn-volver" href="{% url 'libreria:inicio' %}">Volver</a> <!--ese href , inicio viene de urls.py de libreria, use namespace porque cuando tengo varias app no se sabra de donde viene esa ruta, por use namespace y cuando pongo la ruta , se agrega ese libreria para saber-->
     </div>
 </form>

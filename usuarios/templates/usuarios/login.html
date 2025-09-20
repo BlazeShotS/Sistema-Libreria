@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block titulo %} Login {% endblock %}
+
+
+{% block contenido %}
+<div class="container">
+    <h2>Iniciar Sesión</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Ingresar</button>
+    </form>
+
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>
+{% endblock %}

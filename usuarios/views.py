@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from .models import Usuario
-from .forms import UsuarioForm
+from .forms import UsuarioForm, LoginForm
 
 
 
@@ -12,3 +13,34 @@ def crearUsuario(request):
         formularioUsuario.save()
         return redirect('libreria:inicio')
     return render(request, 'usuarios/crear.html',{'formularioUsuario':formularioUsuario})
+
+def loginUsuario(request):
+    form = LoginForm(request.POST or None)
+    if request.method == "POST" and form.is_valid():
+        email = form.cleaned_data['email']
+        password = form.cleaned_data['password']
+
+        try:
+            usuario = Usuario.objects.get(email=email)
+        except Usuario.DoesNotExist:
+            messages.error(request, "El usuario no existe")
+            return render(request, 'usuarios/login.html', {'form': form})
+
+        # Verificar la contraseña con el método del modelo
+        if usuario.check_password(password):
+            # Guardar sesión
+            request.session['usuario_id'] = usuario.id
+            request.session['usuario_nombre'] = usuario.nombre
+            request.session['usuario_rol'] = usuario.rol
+
+            if usuario.rol == 'ADMIN':
+                return redirect('libreria:ListarAutores')
+            else:
+                return redirect('libreria:libros')
+        else:
+            messages.error(request, "Contraseña incorrecta")
+    
+    return render(request, 'usuarios/login.html', {'form': form})
+
+
+
