@@ -3,25 +3,31 @@
 {% block titulo %} Login {% endblock %}
 
 {% block contenido %}
-<div class="container form-login">
-    <h2 class="mb-4 text-center">Iniciar Sesión</h2>
+<form method="post" class="login-usuario">
+    {% csrf_token %}
+    <h2 class="titulo-login">Iniciar Sesión</h2>
 
-    <form method="post" class="card p-4 shadow-sm">
-        {% csrf_token %}
-        <div class="mb-3">
-            {{ form.as_p }}
+    {% for campo in form %}
+        <div class="grupo-campo">
+            <label class="label-campo">{{ campo.label }}</label>            
+            {{ campo }}            
+            <div class="error-campo">{{ campo.errors }}</div>
         </div>
-        <button type="submit" class="btn btn-primary w-100">Ingresar</button>
-    </form>
+    {% endfor %}
+
+    <div class="acciones-formulario">
+        <button type="submit" class="btn-login">Ingresar</button>
+        <a class="btn-volver" href="{% url 'libreria:inicio' %}">Volver</a>
+    </div>
 
     {% if messages %}
-        <div class="alert alert-warning mt-3">
-            <ul class="mb-0">
+        <div class="mensajes-login">
+            <ul>
                 {% for message in messages %}
                     <li>{{ message }}</li>
                 {% endfor %}
             </ul>
         </div>
     {% endif %}
-</div>
+</form>
 {% endblock %}
