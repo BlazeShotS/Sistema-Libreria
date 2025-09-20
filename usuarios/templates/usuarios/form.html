@@ -1,22 +1,24 @@
-<form enctype="multipart/form-data" method="post" class="form-autor">
+<form enctype="multipart/form-data" method="post" class="registro-usuario">
     {% csrf_token %}
+    <h2 class="titulo-registro">Crear cuenta</h2>
+
     {% for campo in formularioUsuario %}
-        <div class="campo-formulario">
-            <label class="label-formulario">{{ campo.label }}</label> <!--esto es del verbose_name-->    
+        <div class="grupo-campo">
+            <label class="label-campo">{{ campo.label }}</label>
             
             <input 
                 type="{{ campo.field.widget.input_type }}"
-                class="input-formulario"
+                class="input-campo"
                 name="{{ campo.name }}"
                 placeholder="{{ campo.label }}"
             />
             
-            <div class="error-formulario">{{ campo.errors }}</div>
+            <div class="error-campo">{{ campo.errors }}</div>
         </div>
     {% endfor %}
 
-    <div class="botones-formulario">
-        <input class="btn-enviar" type="submit" value="Registrarse"/>
-        <a class="btn-volver" href="{% url 'libreria:inicio' %}">Volver</a> <!--ese href , inicio viene de urls.py de libreria, use namespace porque cuando tengo varias app no se sabra de donde viene esa ruta, por use namespace y cuando pongo la ruta , se agrega ese libreria para saber-->
+    <div class="acciones-formulario">
+        <input class="btn-registro" type="submit" value="Registrarse"/>
+        <a class="btn-volver" href="{% url 'libreria:inicio' %}">Volver</a>
     </div>
 </form>

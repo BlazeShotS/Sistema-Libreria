@@ -4,17 +4,12 @@
 
 {% block contenido %}
 
-<br>
-<div class="card">
-    <div class="card-header">Registrese cliente</div>
-    <div class="card-body">
-        <h4 class="titulo-autor">Registrese</h4>
-        {% include 'usuarios/form.html' %} <!--Incluye TODA la vista-->
-    </div>
+<div class="card-body">
+    {% include 'usuarios/form.html' %} <!--Incluye TODA la vista-->
+</div>
 
-    <div class="card-footer text-muted">
-        
-    </div>
+<div class="card-footer text-muted">
+
 </div>
 
 {% endblock %}
