@@ -47,3 +47,20 @@ class Libro(models.Model):
 
     class Meta:
         db_table = 'libro'
+
+class Categoria(models.Model):
+    nombre = models.CharField(max_length=50, verbose_name='Nombre de la categoría', unique=True)
+    descripcion = models.TextField(null=True, blank=True, verbose_name='Descripción')
+
+    #Metodo personalizado
+    def nombre_completo(self):
+        return "{}".format(self.nombre)
+
+    def __str__(self):
+        return self.nombre_completo()
+
+    class Meta:
+        verbose_name = 'Categoría'
+        verbose_name_plural = 'Categorías'
+        db_table = 'categoria'
+        ordering = ['nombre']
