@@ -51,11 +51,11 @@ class Libro(models.Model):
     titulo = models.CharField(max_length=100, verbose_name='Titulo') #verbose sirve para mostrar al usuario como se llama ese campo
     imagen = models.ImageField(upload_to='imagenes/',verbose_name='Imagen' ,null=True) #imagenes/ es la carpeta que se creara a continuacion
     descripcion = models.TextField(null=True, verbose_name='Descripcion')
-    precio = models.DecimalField(max_digits=8, decimal_places=2, verbose_name='Precio')
+    precio = models.DecimalField(max_digits=8, decimal_places=2, verbose_name='Precio',default=0)
     stock = models.PositiveIntegerField(verbose_name='Stock', default=0)
     autor = models.ForeignKey(Autor,null=True,blank=True,on_delete=models.CASCADE) #ese CASCADE es si se borra un autor se borra todo los cursos relacionados con ese libro
     #El FK se crea con el nombre del campo + el id en este caso autor + _id
-    categoria = models.ForeignKey(Categoria,null=True, blank=True, on_delete=models.CASCADE)
+    categoria = models.ForeignKey(Categoria,null=True, blank=True, on_delete=models.PROTECT) #No permite borrar la categoría si tiene libros relacionados.
 
 
     #Para que en la pagina admin de django, se visualize con estos nombres

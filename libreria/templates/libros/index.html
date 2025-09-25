@@ -21,6 +21,9 @@
                         <th scope="col">Titulo</th>
                         <th scope="col">Imagen</th>
                         <th scope="col">Descripcion</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Stock</th>
+                        <th scope="col">Categoria</th>
                         <th scope="col">Autor</th>
                         <th scope="col">Acciones</th>
                     </tr>
@@ -34,6 +37,9 @@
                             <img src=" {{libro.imagen.url}}" alt="img" height="100px" width="100px">                           
                         </td>
                         <td>{{libro.descripcion}}</td>
+                        <td>{{libro.precio}}</td>
+                        <td>{{libro.stock}}</td>
+                        <td>{{libro.categoria}}</td>
                         <td>{{libro.autor}}</td>
                         <td>
                             <a name="" id="" class="btn btn-warning" href="{% url 'libreria:detalle' libro.id %}" role="button">Editar</a> 
