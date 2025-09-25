@@ -4,7 +4,10 @@
 
 {% block contenido %}
 
-<a name="" id="" class="btn btn-success" href="{% url 'libreria:CrearAutor'%}" role="button">Agregar nuevo autor</a> <!--'CrearAutor' viene de urls.py de libreria name=CrearAutor-->
+<div class="acciones-categorias">
+    <a class="btn-agregar" href="{% url 'libreria:CrearAutor'%}" role="button"> Agregar nueva autor</a> <!--'CrearAutor' viene de urls.py de libreria name=CrearAutor-->
+    <a class="btn-volver" href="{% url 'libreria:panel'%}" role="button"> Volver al panel</a>
+</div>
 
 
 <h2 class="titulo-principal">Lista de Autores</h2>

@@ -1,0 +1,143 @@
+:root {
+  --azul-principal: #002D85;
+  --verde-exito: #198754;
+  --gris-neutral: #6c757d;
+  --rojo-alerta: #dc3545;
+  --fondo-tabla: #ffffff;
+  --borde-tabla: #dee2e6;
+  --hover-fila: #f4f6f9;
+}
+
+/* Contenedor de botones */
+.acciones-categorias {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+/* Botón Agregar */
+.btn-agregar {
+  background: var(--verde-exito);
+  color: #fff;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+.btn-agregar:hover {
+  background: #218838;
+}
+
+/* Botón Volver */
+.btn-volver {
+  background: var(--gris-neutral);
+  color: #fff;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+.btn-volver:hover {
+  background: #545b62;
+}
+
+/* Título */
+.titulo-principal {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--azul-principal);
+  margin-bottom: 20px;
+}
+
+/* Tabla */
+.tabla-categorias {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--fondo-tabla);
+  border: 1px solid var(--borde-tabla);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.tabla-categorias thead {
+  background: var(--azul-principal);
+  color: #fff;
+}
+
+.tabla-categorias th, 
+.tabla-categorias td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--borde-tabla);
+}
+
+
+/* Botones dentro de tabla */
+.btn-editar, .btn-eliminar {
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+  margin-right: 6px;
+}
+
+.btn-editar {
+  background: var(--azul-principal);
+  color: #fff;
+}
+.btn-editar:hover {
+  background: #0141c1;
+}
+
+.btn-eliminar {
+  background: var(--rojo-alerta);
+  color: #fff;
+}
+.btn-eliminar:hover {
+  background: #bd2130;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .tabla-categorias, 
+  .tabla-categorias thead, 
+  .tabla-categorias tbody, 
+  .tabla-categorias th, 
+  .tabla-categorias td, 
+  .tabla-categorias tr {
+    display: block;
+    width: 100%;
+  }
+
+  .tabla-categorias thead {
+    display: none;
+  }
+
+  .tabla-categorias tr {
+    margin-bottom: 15px;
+    border: 1px solid var(--borde-tabla);
+    border-radius: 6px;
+    padding: 12px;
+  }
+
+  .tabla-categorias td {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border: none;
+  }
+
+  .tabla-categorias td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: var(--azul-principal);
+  }
+}

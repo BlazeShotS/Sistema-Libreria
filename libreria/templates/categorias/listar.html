@@ -4,36 +4,38 @@
 
 {% block contenido %}
 
-<a name="" id="" class="btn btn-success" href="{% url 'libreria:CrearCategoria'%}" role="button">Agregar nuevo categoria</a>
-<a name="" id="" class="btn btn-success" href="{% url 'libreria:panel'%}" role="button">Volver al panel</a>
 
+<div class="acciones-categorias">
+    <a class="btn-agregar" href="{% url 'libreria:CrearCategoria'%}" role="button"> Agregar nueva categoría</a>
+    <a class="btn-volver" href="{% url 'libreria:panel'%}" role="button"> Volver al panel</a>
+</div>
 
+<h2 class="titulo-principal">Lista de categorías</h2>
 
-<h2 class="titulo-principal">Lista de categorias</h2>
-
-<table class="tabla-autores">
-    <thead class="tabla-cabecera">
+<table class="tabla-categorias">
+    <thead>
         <tr>
             <th>Nombre</th>
-            <th>Descripcion</th>
-            <th>Accion</th>
+            <th>Descripción</th>
+            <th>Acción</th>
         </tr>
     </thead>
     <tbody>
         {% for categoria in categorias %}
-        <tr class="fila-autor">
-            <td>{{ categoria.nombre}}</td>
-            <td>{{ categoria.descripcion}}</td>           
+        <tr>
+            <td>{{ categoria.nombre }}</td>
+            <td>{{ categoria.descripcion }}</td>
             <td>
-                <a name="" id="" class="btn-editar" href="{% url 'libreria:EditarCategoria' categoria.id %}" role="button">Editar</a> 
-                <a name="" id="" class="btn-eliminar" href="{% url 'libreria:EliminarCategoria' categoria.id %}" role="button">Eliminar</a> <!--eliminar viene del name=eliminar de urls.py de libreria-->
+                <a class="btn-editar" href="{% url 'libreria:EditarCategoria' categoria.id %}">Editar</a> 
+                <a class="btn-eliminar" href="{% url 'libreria:EliminarCategoria' categoria.id %}">Eliminar</a>
             </td>
         </tr>
         {% empty %}
         <tr>
-            <td colspan="3">No hay categorias registrados.</td>
+            <td colspan="3">No hay categorías registradas.</td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
+
 {% endblock %}
