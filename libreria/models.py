@@ -12,6 +12,7 @@ class Autor(models.Model):
     nombres = models.CharField(max_length=20, verbose_name='Nombres')
     fecha_nacimiento=models.DateField(verbose_name='Fecha de nacimiento')
     sexo = models.CharField(max_length=1, choices=sexos, default='F')
+    
 
     #Metodo personalizado
     def nombre_completo(self):
@@ -26,27 +27,6 @@ class Autor(models.Model):
         verbose_name_plural= 'Autores'
         db_table='autor' #Nombre personalizado con el que se creara en la database
         ordering=['apellido_paterno','-apellido_materno'] #Forma descendente , en el admin django
-
-class Libro(models.Model):
-    id = models.AutoField(primary_key=True)
-    titulo = models.CharField(max_length=100, verbose_name='Titulo') #verbose sirve para mostrar al usuario como se llama ese campo
-    imagen = models.ImageField(upload_to='imagenes/',verbose_name='Imagen' ,null=True) #imagenes/ es la carpeta que se creara a continuacion
-    descripcion = models.TextField(null=True, verbose_name='Descripcion')
-    autor = models.ForeignKey(Autor,null=True,blank=True,on_delete=models.CASCADE) #ese CASCADE es si se borra un autor se borra todo los cursos relacionados con ese libro
-    #El FK se crea con el nombre del campo + el id en este caso autor + _id
-
-    #Para que en la pagina admin de django, se visualize con estos nombres
-    def __str__(self):
-        fila = "Título " + self.titulo + " - " + " Descripcion " + self.descripcion
-        return fila
-    
-    #Para que se borre la imagen de la carpeta imagenes tambien
-    def delete(self, using = None, keep_parents = False):
-        self.imagen.storage.delete(self.imagen.name)
-        super().delete()
-
-    class Meta:
-        db_table = 'libro'
 
 class Categoria(models.Model):
     nombre = models.CharField(max_length=50, verbose_name='Nombre de la categoría', unique=True)
@@ -64,3 +44,30 @@ class Categoria(models.Model):
         verbose_name_plural = 'Categorías'
         db_table = 'categoria'
         ordering = ['nombre']
+
+
+class Libro(models.Model):
+    id = models.AutoField(primary_key=True)
+    titulo = models.CharField(max_length=100, verbose_name='Titulo') #verbose sirve para mostrar al usuario como se llama ese campo
+    imagen = models.ImageField(upload_to='imagenes/',verbose_name='Imagen' ,null=True) #imagenes/ es la carpeta que se creara a continuacion
+    descripcion = models.TextField(null=True, verbose_name='Descripcion')
+    precio = models.DecimalField(max_digits=8, decimal_places=2, verbose_name='Precio')
+    stock = models.PositiveIntegerField(verbose_name='Stock', default=0)
+    autor = models.ForeignKey(Autor,null=True,blank=True,on_delete=models.CASCADE) #ese CASCADE es si se borra un autor se borra todo los cursos relacionados con ese libro
+    #El FK se crea con el nombre del campo + el id en este caso autor + _id
+    categoria = models.ForeignKey(Categoria,null=True, blank=True, on_delete=models.CASCADE)
+
+
+    #Para que en la pagina admin de django, se visualize con estos nombres
+    def __str__(self):
+        fila = "Título " + self.titulo + " - " + " Descripcion " + self.descripcion
+        return fila
+    
+    #Para que se borre la imagen de la carpeta imagenes tambien
+    def delete(self, using = None, keep_parents = False):
+        self.imagen.storage.delete(self.imagen.name)
+        super().delete()
+
+    class Meta:
+        db_table = 'libro'
+
