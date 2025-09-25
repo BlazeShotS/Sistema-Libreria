@@ -10,6 +10,9 @@ urlpatterns = [
     path('', views.inicio, name='inicio'), #name='inicio' , ese inicio tengo que poner en mi href del html o ruta mejor dicho
     path('nosotros', views.nosotros, name= 'nosotros'),
 
+    path('panelAdmin', views.panel, name= 'panel'),
+
+
     path('libros', views.libros, name='libros'),
     path('libros/crear', views.crear, name='crear'),
     path('eliminar/<int:id>', views.eliminar, name='eliminar'), #el id, tiene que coincidir con el de mi metodo eliminnar el id, tal cual

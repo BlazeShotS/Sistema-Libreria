@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block titulo %} Panel Administrador {% endblock %}
+
+
+{% block contenido %}
+
+<div class="container my-5">
+    <h2 class="text-center mb-4" style="color: #002D85;">Panel de Administración</h2>
+    
+    <div class="row justify-content-center">
+        <!-- Libros -->
+        <div class="col-md-3">
+            <div class="card shadow-lg border-0 rounded-3">
+                <div class="card-body text-center" style="background-color: #FFBE2D;">
+                    <h5 class="card-title fw-bold" style="color:#002D85;">Libros</h5>
+                    <p class="card-text small" style="color:#002D85;">Gestión de libros disponibles en la librería.</p>
+                    <a href="{% url 'libreria:libros' %}" class="btn btn-outline-primary btn-sm fw-bold" style="color:#002D85; border-color:#002D85;">Ir</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Autores -->
+        <div class="col-md-3">
+            <div class="card shadow-lg border-0 rounded-3">
+                <div class="card-body text-center" style="background-color: #FFBE2D;">
+                    <h5 class="card-title fw-bold" style="color:#002D85;">Autores</h5>
+                    <p class="card-text small" style="color:#002D85;">Gestión de autores registrados en el sistema.</p>
+                    <a href="{% url 'libreria:ListarAutores' %}" class="btn btn-outline-primary btn-sm fw-bold" style="color:#002D85; border-color:#002D85;">Ir</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Categorías -->
+        <div class="col-md-3">
+            <div class="card shadow-lg border-0 rounded-3">
+                <div class="card-body text-center" style="background-color: #FFBE2D;">
+                    <h5 class="card-title fw-bold" style="color:#002D85;">Categorías</h5>
+                    <p class="card-text small" style="color:#002D85;">Organiza los libros por categorías.</p>
+                    <a href="{% url 'libreria:ListarCategoria' %}" class="btn btn-outline-primary btn-sm fw-bold" style="color:#002D85; border-color:#002D85;">Ir</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

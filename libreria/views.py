@@ -9,6 +9,9 @@ def inicio(request):
     return render(request, 'paginas/inicio.html')
 def nosotros(request):
     return render(request, 'paginas/nosotros.html')
+def panel(request): #PARA ADMIN
+    return render(request, 'panelAdmin/panel.html')
+
 
 #Para libros
 def libros(request):
@@ -85,4 +88,4 @@ def editarCategoria(request, id):
 def eliminarCategoria(request, id):
     categoria = Categoria.objects.get(id=id)
     categoria.delete()
-    return redirect('libreria:EliminarCategoria')
+    return redirect('libreria:ListarCategoria')

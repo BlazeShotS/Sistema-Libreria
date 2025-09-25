@@ -34,7 +34,7 @@ def loginUsuario(request):
             request.session['usuario_rol'] = usuario.rol
 
             if usuario.rol == 'ADMIN':
-                return redirect('libreria:ListarAutores')
+                return redirect('libreria:panel')
             else:
                 return redirect('libreria:libros')
         else:

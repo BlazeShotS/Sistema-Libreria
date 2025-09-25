@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block titulo %} Editar Categoria {% endblock %}
+
+
+{% block contenido %}
+<br>
+<div class="contenedor-autor">
+    <div class="header-autor">Editar una categoria</div>
+    <div class="body-autor">
+        {% include 'categorias/form.html' %} <!--Incluye el formulario-->
+    </div>
+    
+    <div class="footer-autor">
+
+    </div>
+</div>
+
+
+{% endblock %}
