@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Libro , Autor
-from .forms import LibroForm , AutorForm
+from .models import Libro , Autor , Categoria
+from .forms import LibroForm , AutorForm , CategoriaForm
 
 
 # Create your views here.
@@ -10,7 +10,7 @@ def inicio(request):
 def nosotros(request):
     return render(request, 'paginas/nosotros.html')
 
-
+#Para libros
 def libros(request):
     libros = Libro.objects.all() #Obteniendo toda la informacion de libros , el objects es como el repository en java spring boot
     return render(request, 'libros/index.html',{'libros':libros}) #libros de color naranja sera llamado en el html
@@ -60,3 +60,29 @@ def eliminarAutor(request, id):
     autor = Autor.objects.get(id=id)
     autor.delete()
     return redirect('libreria:ListarAutores')
+
+
+#Para categoria
+def categoria(request):
+    categorias = Categoria.objects.all()
+    return render(request, 'categorias/listar.html',{'categorias':categorias})
+
+def crearCategoria(request):
+    formularioCategoria = CategoriaForm(request.POST or None)
+    if formularioCategoria.is_valid():
+        formularioCategoria.save()
+        return redirect('libreria:ListarCategoria')
+    return render(request, 'categorias/crear.html',{'formularioCategoria':formularioCategoria})
+
+def editarCategoria(request, id):
+    categoria = Categoria.objects.get(id=id)
+    formularioCategoria = CategoriaForm(request.POST or None, instance=categoria)
+    if formularioCategoria.is_valid() and request.POST:
+        formularioCategoria.save()
+        return redirect('libreria:ListarCategoria')
+    return render(request, 'categorias/editar.html',{'formularioCategoria': formularioCategoria})
+
+def eliminarCategoria(request, id):
+    categoria = Categoria.objects.get(id=id)
+    categoria.delete()
+    return redirect('libreria:EliminarCategoria')

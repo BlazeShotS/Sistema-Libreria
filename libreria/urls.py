@@ -6,6 +6,7 @@ from django.contrib.staticfiles.urls import static
 app_name = 'libreria' #Define un namespace , cosa que si uso estas rutas en otras app , ya sabre de que app viene
 
 urlpatterns = [
+
     path('', views.inicio, name='inicio'), #name='inicio' , ese inicio tengo que poner en mi href del html o ruta mejor dicho
     path('nosotros', views.nosotros, name= 'nosotros'),
 
@@ -17,8 +18,12 @@ urlpatterns = [
     path('autor', views.autor, name='ListarAutores'),
     path('autor/crear', views.crearAutor, name='CrearAutor'),
     path('autor/editar/<int:id>', views.editarAutor, name='EditarAutor'),
-    path('autor/eliminar/<int:id>', views.eliminarAutor, name='EliminarAutor')
+    path('autor/eliminar/<int:id>', views.eliminarAutor, name='EliminarAutor'),
 
+    path('categoria', views.categoria, name='ListarCategoria'),
+    path('categoria/crear', views.crearCategoria, name='CrearCategoria'),
+    path('categoria/editar<int:id>', views.editarCategoria, name='EditarCategoria'),
+    path('categoria/eliminar/<int:id>', views.eliminarCategoria, name='EliminarCategoria'),
 
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) #PARA LAS IMAGENES , SE PUEDAN MOSTRAR EN MI PAGINA
