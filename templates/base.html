@@ -28,7 +28,7 @@
     <nav class="navbar navbar-expand" style="background-color: #FFBE2D;">
         <div class="nav navbar-nav">
             <a class="nav-item nav-link active" style="color: #002D85;" href="{% url 'libreria:inicio'%}">Inicio </a>
-            <a class="nav-item nav-link active" style="color: #002D85;" href="">Catalogo</a>
+            <a class="nav-item nav-link active" style="color: #002D85;" href="{% url 'libreria:categorias_preview'%}">Catalogo</a>
             <a class="nav-item nav-link active" style="color: #002D85;" href="{% url 'usuarios:crearUsuario'%}">Crear Cuenta </a>
             <a class="nav-item nav-link active" style="color: #002D85;" href="{% url 'usuarios:login'%}">Login </a>
             <a class="nav-item nav-link active" style="color: #002D85;" href="{% url 'libreria:nosotros'%}">Nosotros </a>

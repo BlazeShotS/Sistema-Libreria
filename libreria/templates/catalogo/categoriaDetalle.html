@@ -1,0 +1,19 @@
+<h1>{{ categoria.nombre }}</h1>
+<p>{{ categoria.descripcion }}</p>
+
+<div style="display:flex; flex-wrap:wrap; gap:15px;">
+  {% for libro in libros %}
+    <div style="width:180px; border:1px solid #ccc; padding:10px; text-align:center;">
+      {% if libro.imagen %}
+        <img src="{{ libro.imagen.url }}" alt="{{ libro.titulo }}" style="max-width:100%; height:200px; object-fit:cover;">
+      {% endif %}
+      <h4>{{ libro.titulo }}</h4>
+      <p>{{ libro.descripcion|truncatewords:15 }}</p>
+      <p><b>${{ libro.precio }}</b></p>
+    </div>
+  {% empty %}
+    <p>No hay libros en esta categoría.</p>
+  {% endfor %}
+</div>
+
+<a href="{% url 'categorias_preview' %}">← Volver a categorías</a>

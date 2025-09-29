@@ -29,4 +29,9 @@ urlpatterns = [
     path('categoria/eliminar/<int:id>', views.eliminarCategoria, name='EliminarCategoria'),
 
 
+    path("Libroscategorias", views.categoriasPreview, name="categorias_preview"),
+    path("Catalogocategoria/<int:categoria_id>/", views.categoriaDetalle, name="categorias_detalle"),
+
+
+
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) #PARA LAS IMAGENES , SE PUEDAN MOSTRAR EN MI PAGINA

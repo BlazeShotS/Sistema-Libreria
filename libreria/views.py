@@ -93,7 +93,12 @@ def eliminarCategoria(request, id):
 
 #Para mostrar una preview de las categorias de ese libro y tambien todo los libros de esa categoria
 
-def categorias_preview(request):
+def categoriasPreview(request):
     categorias = Categoria.objects.all()
-    return render(request, "categoriaPreview.html", {"categorias": categorias})
+    return render(request, "catalogo/categoriaPreview.html", {"categorias": categorias})
 
+# views.py
+def categoriaDetalle(request, categoria_id):
+    categoria = get_object_or_404(Categoria, id=categoria_id)
+    libros = categoria.libro_set.all()  # todos los libros de esa categoría
+    return render(request, "catalogo/categoriaDetalle.html", {"categoria": categoria, "libros": libros})
