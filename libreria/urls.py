@@ -30,7 +30,7 @@ urlpatterns = [
 
 
     path("Libroscategorias", views.categoriasPreview, name="categorias_preview"),
-    path("Catalogocategoria/<int:categoria_id>/", views.categoriaDetalle, name="categorias_detalle"),
+    path("Catalogocategoria/<int:categoria_id>", views.categoriaDetalle, name="categorias_detalle"),
 
 
 
