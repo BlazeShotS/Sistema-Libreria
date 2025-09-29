@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from .models import Libro , Autor , Categoria
 from .forms import LibroForm , AutorForm , CategoriaForm
@@ -89,3 +89,16 @@ def eliminarCategoria(request, id):
     categoria = Categoria.objects.get(id=id)
     categoria.delete()
     return redirect('libreria:ListarCategoria')
+
+
+#Para mostrar una preview de las categorias de ese libro y tambien todo los libros de esa categoria
+
+def categorias_preview(request):
+    categorias = Categoria.objects.all()
+    return render(request, "categoriaPreview.html", {"categorias": categorias})
+
+# views.py
+def categoria_detalle(request, categoria_id):
+    categoria = get_object_or_404(Categoria, id=categoria_id)
+    libros = categoria.libro_set.all()  # todos los libros de esa categoría
+    return render(request, "categoria_detalle.html", {"categoria": categoria, "libros": libros})
