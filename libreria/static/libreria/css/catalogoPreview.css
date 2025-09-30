@@ -1,0 +1,71 @@
+.categorias-titulo {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+
+.categoria {
+  margin-bottom: 50px;
+}
+
+.categoria-nombre a {
+  text-decoration: none;
+  color: #222;
+  font-size: 1.5rem;
+}
+
+.categoria-descripcion {
+  color: #555;
+  margin-bottom: 15px;
+}
+
+/* Contenedor carrusel */
+.libros-slider {
+  overflow: hidden;
+  position: relative;
+}
+
+.libros-contenedor {
+  display: flex;
+  gap: 15px;
+  transition: transform 0.5s ease-in-out;
+}
+
+.libro-card {
+  flex: 0 0 180px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.libro-imagen {
+  max-width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.libro-titulo {
+  font-size: 1rem;
+  margin: 10px 0;
+  color: #333;
+}
+
+.libro-precio {
+  color: #007bff;
+  font-weight: bold;
+}
+
+.ver-mas {
+  display: inline-block;
+  margin-top: 10px;
+  color: #007bff;
+  text-decoration: none;
+}
+.ver-mas:hover {
+  text-decoration: underline;
+}

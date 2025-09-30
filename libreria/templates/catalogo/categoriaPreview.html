@@ -4,30 +4,56 @@
 
 {% block contenido %}
 
-<h1>Categorías</h1>
+<h1 class="categorias-titulo">Categorías</h1>
 
 {% for categoria in categorias %}
-  <section>
-    <h2>
-      <a href="{% url 'libreria:categorias_detalle' categoria.id %}">{{ categoria.nombre }}</a>
+  <section class="categoria">
+    <h2 class="categoria-nombre">
+      <a href="{% url 'libreria:categorias_detalle' categoria.id %}">
+        {{ categoria.nombre }}
+      </a>
     </h2>
-    <p>{{ categoria.descripcion }}</p>
+    <p class="categoria-descripcion">{{ categoria.descripcion }}</p>
 
-    <div style="display:flex; gap:15px; flex-wrap:wrap;">
-      {% for libro in categoria.libro_set.all|slice:":5" %} <!--Esto quiere decir, dame todo los libros que pertenecen a esa categoria , y como esta relacionado pk con fk nos da-->
-        <div style="width:180px; border:1px solid #ccc; padding:10px; text-align:center;">
-          {% if libro.imagen %}
-            <img src="{{ libro.imagen.url }}" alt="{{ libro.titulo }}" style="max-width:100%; height:200px; object-fit:cover;">
-          {% endif %}
-          <h4>{{ libro.titulo }}</h4>
-          <p>Precio: S/{{ libro.precio }}</p>
-        </div>
-      {% endfor %}
+    <div class="libros-slider">
+      <div class="libros-contenedor" id="slider-{{ categoria.id }}">
+        {% for libro in categoria.libro_set.all|slice:":5" %}
+          <div class="libro-card">
+            {% if libro.imagen %}
+              <img src="{{ libro.imagen.url }}" alt="{{ libro.titulo }}" class="libro-imagen">
+            {% endif %}
+            <h4 class="libro-titulo">{{ libro.titulo }}</h4>
+            <p class="libro-precio">S/ {{ libro.precio }}</p>
+          </div>
+        {% endfor %}
+      </div>
     </div>
 
-    <a href="{% url 'libreria:categorias_detalle' categoria.id %}">Ver todos los libros de {{ categoria.nombre }}</a>
+    <a href="{% url 'libreria:categorias_detalle' categoria.id %}" class="ver-mas">
+      Ver todos los libros de {{ categoria.nombre }}
+    </a>
   </section>
 {% endfor %}
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const sliders = document.querySelectorAll(".libros-contenedor");
+
+    sliders.forEach(slider => {
+      let index = 0;
+      const cards = slider.children;
+      const total = cards.length;
+
+      setInterval(() => {
+        index = (index + 1) % total;
+        slider.style.transform = `translateX(-${index * 195}px)`; 
+        // 180px ancho + 15px gap
+      }, 5000);
+    });
+  });
+</script>
+
 
 
 {% endblock %}
