@@ -1,3 +1,9 @@
+{% extends "base.html" %}
+
+{% block titulo %} Categorias {% endblock %}
+
+{% block contenido %}
+
 <h1>{{ categoria.nombre }}</h1>
 <p>{{ categoria.descripcion }}</p>
 
@@ -9,7 +15,7 @@
       {% endif %}
       <h4>{{ libro.titulo }}</h4>
       <p>{{ libro.descripcion|truncatewords:15 }}</p>
-      <p><b>${{ libro.precio }}</b></p>
+      <p><b>S/{{ libro.precio }}</b></p>
     </div>
   {% empty %}
     <p>No hay libros en esta categoría.</p>
@@ -17,3 +23,6 @@
 </div>
 
 <a href="{% url 'libreria:categorias_preview' %}">← Volver a categorías</a>
+
+
+{% endblock %}
