@@ -7,32 +7,34 @@
 <h1 class="categorias-titulo">Categorías</h1>
 
 {% for categoria in categorias %}
-  <section class="categoria">
-    <div class="categoria-header">
-      <div class="categoria-nombre">
-        <a href="{% url 'libreria:categorias_detalle' categoria.id %}"> <!--Viene del for de categoria, sino que esta en modo url-->
-          {{ categoria.nombre }}
-        </a>
-      </div>
+<section class="categoria">
+  <div class="categoria-header">
+    <div class="categoria-nombre">
+      <a href="{% url 'libreria:categorias_detalle' categoria.id %}">
+        <!--Viene del for de categoria, sino que esta en modo url-->
+        {{ categoria.nombre }}
+      </a>
     </div>
+  </div>
 
 
-    <div class="libros-slider">
-      <div class="libros-contenedor" id="slider-{{ categoria.id }}">
-        {% for libro in categoria.libro_set.all|slice:":10" %} <!--libro solo es un nombre de la variable temporal-->
-          <div class="libro-card">
-            {% if libro.imagen %}
-              <img src="{{ libro.imagen.url }}" alt="{{ libro.titulo }}" class="libro-imagen">
-            {% endif %}
-            <h4 class="libro-titulo">{{ libro.titulo|truncatechars:30 }}</h4>
-            <p class="libro-autor">{{ libro.autor }}</p>
-            <p class="libro-precio">S/ {{ libro.precio }}</p>
-          </div>
-        {% endfor %}
+  <div class="libros-slider">
+    <div class="libros-contenedor" id="slider-{{ categoria.id }}">
+      {% for libro in categoria.libro_set.all %} <!--libro solo es un nombre de la variable temporal-->
+      <div class="libro-card">
+        {% if libro.imagen %}
+        <img src="{{ libro.imagen.url }}" alt="{{ libro.titulo }}" class="libro-imagen">
+        {% endif %}
+        <h4 class="libro-titulo">{{ libro.titulo|truncatechars:30 }}</h4>
+        <p class="libro-autor">{{ libro.autor }}</p>
+        <p class="libro-precio">S/ {{ libro.precio }}</p>
       </div>
+      {% endfor %}
     </div>
-    <a href="{% url 'libreria:categorias_detalle' categoria.id %}" class="ver-mas">Ver todos los libros <span class="flecha">→</span></a>
-  </section>
+  </div>
+  <a href="{% url 'libreria:categorias_detalle' categoria.id %}" class="ver-mas">Ver todos los libros <span
+      class="flecha">→</span></a>
+</section>
 {% endfor %}
 
 <script>
@@ -40,35 +42,40 @@
     const sliders = document.querySelectorAll(".libros-contenedor");
 
     sliders.forEach(slider => {
-      let index = 0;
       const cards = slider.children;
       const total = cards.length;
-      const visible = 5; // número visible aprox según ancho
+      const visible = 5;   // libros visibles a la vez
+      const step = 3;      // cantidad de libros que se moverán por paso
+      const cardWidth = 220; // ancho aproximado + gap
 
-      // Deslizamiento automático
-      setInterval(() => {
-        index = (index + 1) % (total - visible + 1);
-        slider.style.transform = `translateX(-${index * 220}px)`;
-      }, 4000);
-    });
+      // 🔁 Clonamos los primeros libros para lograr el efecto infinito
+      for (let i = 0; i < step; i++) {
+        const clone = cards[i].cloneNode(true);
+        slider.appendChild(clone);
+      }
 
-    // Botones manuales
-    document.querySelectorAll(".btn-slider").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const slider = document.querySelector(btn.dataset.target);
-        const current = parseInt(slider.dataset.index || 0);
-        const total = slider.children.length;
-        const visible = 5;
-        let newIndex = btn.classList.contains("next") ? current + 1 : current - 1;
+      let index = 0;
 
-        if (newIndex < 0) newIndex = total - visible;
-        if (newIndex > total - visible) newIndex = 0;
+      function moveSlider() {
+        index++;
+        slider.style.transition = "transform 0.6s ease-in-out";
+        slider.style.transform = `translateX(-${index * step * cardWidth}px)`;
 
-        slider.dataset.index = newIndex;
-        slider.style.transform = `translateX(-${newIndex * 220}px)`;
-      });
+        // Cuando llegamos al final (donde están los clones), reiniciamos sin transición
+        if (index >= total / step) {
+          setTimeout(() => {
+            slider.style.transition = "none";
+            slider.style.transform = "translateX(0)";
+            index = 0;
+          }, 700); // justo después de que termine la animación
+        }
+      }
+
+      // ⏱️ Se mueve cada 2 segundos
+      setInterval(moveSlider, 2000);
     });
   });
 </script>
+
 
 {% endblock %}
