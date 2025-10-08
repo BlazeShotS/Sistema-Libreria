@@ -36,7 +36,7 @@ def loginUsuario(request):
             if usuario.rol == 'ADMIN':
                 return redirect('libreria:panel')
             else:
-                return redirect('libreria:libros')
+                return redirect('libreria:categorias_preview')
         else:
             messages.error(request, "Contraseña incorrecta")
     
