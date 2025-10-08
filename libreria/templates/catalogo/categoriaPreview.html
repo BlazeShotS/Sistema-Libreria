@@ -18,7 +18,6 @@
 
 
     <div class="libros-slider">
-
       <div class="libros-contenedor" id="slider-{{ categoria.id }}">
         {% for libro in categoria.libro_set.all|slice:":10" %} <!--libro solo es un nombre de la variable temporal-->
           <div class="libro-card">
@@ -31,7 +30,6 @@
           </div>
         {% endfor %}
       </div>
-
     </div>
     <a href="{% url 'libreria:categorias_detalle' categoria.id %}" class="ver-mas">Ver todos los libros <span class="flecha">→</span></a>
   </section>
