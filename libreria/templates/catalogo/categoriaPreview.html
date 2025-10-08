@@ -44,8 +44,8 @@
     sliders.forEach(slider => {
       const cards = slider.children;
       const total = cards.length;
-      const visible = 5;   // libros visibles a la vez
-      const step = 3;      // cantidad de libros que se moverán por paso
+      const visible = 3;   // libros visibles a la vez
+      const step = 2;      // cantidad de libros que se moverán por paso
       const cardWidth = 220; // ancho aproximado + gap
 
       // 🔁 Clonamos los primeros libros para lograr el efecto infinito
@@ -71,8 +71,8 @@
         }
       }
 
-      // ⏱️ Se mueve cada 2 segundos
-      setInterval(moveSlider, 2000);
+      // ⏱️ Se mueve cada 3 segundos
+      setInterval(moveSlider, 3000);
     });
   });
 </script>
