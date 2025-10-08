@@ -38,44 +38,40 @@
 {% endfor %}
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const sliders = document.querySelectorAll(".libros-contenedor");
+document.addEventListener("DOMContentLoaded", () => {
+  const sliders = document.querySelectorAll(".libros-contenedor"); //esto le dice al navegador , “Busca en el DOM todos los elementos que tengan la clase .libros-contenedor
 
-    sliders.forEach(slider => {
-      const cards = slider.children;
-      const total = cards.length;
-      const visible = 3;   // libros visibles a la vez
-      const step = 2;      // cantidad de libros que se moverán por paso
-      const cardWidth = 220; // ancho aproximado + gap
+  sliders.forEach(slider => {
+    const cards = slider.children; //Obtiene el elemtno hijo, en este caso el libro-card
+    const total = cards.length;
+    const visible = 0;   // cantidad visible de libros (a partir de cuando se volvera a cargar desde el inicio, en este caso cero osea no haya nada ,y vuelve al inicio)
+    const step = 2;      // cantidad que se moverá por paso (va comiendo 2)
+    const cardWidth = 220; // ancho aprox. de cada card + margen
+    let index = 0;
 
-      // 🔁 Clonamos los primeros libros para lograr el efecto infinito
-      for (let i = 0; i < step; i++) {
-        const clone = cards[i].cloneNode(true);
-        slider.appendChild(clone);
+    function moveSlider() {
+      //Desliza el contenedor .libros-contenedor hacia la izquierda una distancia calculada
+      index++;
+      slider.style.transition = "transform 0.8s ease-in-out";
+      slider.style.transform = `translateX(-${index * step * cardWidth}px)`;
+
+      // Si llegamos al final, aquí se compara el progreso (index * step) con el número total de libros menos los visibles.
+      if (index * step >= total - visible) {
+        setTimeout(() => {
+          slider.style.transition = "none";
+          slider.style.transform = "translateX(0)";
+          index = 0;//se reinicia el index
+        }, 850);
       }
+    }
 
-      let index = 0;
-
-      function moveSlider() {
-        index++;
-        slider.style.transition = "transform 0.6s ease-in-out";
-        slider.style.transform = `translateX(-${index * step * cardWidth}px)`;
-
-        // Cuando llegamos al final (donde están los clones), reiniciamos sin transición
-        if (index >= total / step) {
-          setTimeout(() => {
-            slider.style.transition = "none";
-            slider.style.transform = "translateX(0)";
-            index = 0;
-          }, 700); // justo después de que termine la animación
-        }
-      }
-
-      // ⏱️ Se mueve cada 3 segundos
-      setInterval(moveSlider, 3000);
-    });
+    // Mueve cada 5 segundos
+    setInterval(moveSlider, 5000); //Aca llamamos a la funcion moveSlider, quiere decir que cada 5 segundos , se ejecuta la funcion
   });
+});
 </script>
+
+
 
 
 {% endblock %}
