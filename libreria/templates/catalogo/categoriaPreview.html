@@ -10,7 +10,7 @@
   <section class="categoria">
     <div class="categoria-header">
       <h2 class="categoria-nombre">
-        <a href="{% url 'libreria:categorias_detalle' categoria.id %}">
+        <a href="{% url 'libreria:categorias_detalle' categoria.id %}"> <!--Viene del for de categoria, sino que esta en modo url-->
           {{ categoria.nombre }}
         </a>
       </h2>
@@ -25,7 +25,7 @@
       <button class="btn-slider prev" data-target="#slider-{{ categoria.id }}">&#10094;</button>
 
       <div class="libros-contenedor" id="slider-{{ categoria.id }}">
-        {% for libro in categoria.libro_set.all|slice:":10" %}
+        {% for libro in categoria.libro_set.all|slice:":10" %} <!--libro solo es un nombre de la variable temporal-->
           <div class="libro-card">
             {% if libro.imagen %}
               <img src="{{ libro.imagen.url }}" alt="{{ libro.titulo }}" class="libro-imagen">
