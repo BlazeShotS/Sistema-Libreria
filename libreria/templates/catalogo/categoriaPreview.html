@@ -9,20 +9,15 @@
 {% for categoria in categorias %}
   <section class="categoria">
     <div class="categoria-header">
-      <h2 class="categoria-nombre">
+      <div class="categoria-nombre">
         <a href="{% url 'libreria:categorias_detalle' categoria.id %}"> <!--Viene del for de categoria, sino que esta en modo url-->
           {{ categoria.nombre }}
         </a>
-      </h2>
-      <a href="{% url 'libreria:categorias_detalle' categoria.id %}" class="ver-mas">
-        Ver todos los libros →
-      </a>
+      </div>
     </div>
 
-    <p class="categoria-descripcion">{{ categoria.descripcion }}</p>
 
     <div class="libros-slider">
-      <button class="btn-slider prev" data-target="#slider-{{ categoria.id }}">&#10094;</button>
 
       <div class="libros-contenedor" id="slider-{{ categoria.id }}">
         {% for libro in categoria.libro_set.all|slice:":10" %} <!--libro solo es un nombre de la variable temporal-->
@@ -31,18 +26,16 @@
               <img src="{{ libro.imagen.url }}" alt="{{ libro.titulo }}" class="libro-imagen">
             {% endif %}
             <h4 class="libro-titulo">{{ libro.titulo|truncatechars:30 }}</h4>
+            <p class="libro-autor">{{ libro.autor }}</p>
             <p class="libro-precio">S/ {{ libro.precio }}</p>
           </div>
         {% endfor %}
       </div>
 
-      <button class="btn-slider next" data-target="#slider-{{ categoria.id }}">&#10095;</button>
     </div>
+    <a href="{% url 'libreria:categorias_detalle' categoria.id %}" class="ver-mas">Ver todos los libros <span class="flecha">→</span></a>
   </section>
-
-
 {% endfor %}
-
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
@@ -79,6 +72,5 @@
     });
   });
 </script>
-
 
 {% endblock %}
