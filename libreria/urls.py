@@ -28,7 +28,7 @@ urlpatterns = [
     path('categoria/editar<int:id>', views.editarCategoria, name='EditarCategoria'),
     path('categoria/eliminar/<int:id>', views.eliminarCategoria, name='EliminarCategoria'),
 
-
+    #Para el tema de catalogo
     path("Libroscategorias", views.categoriasPreview, name="categorias_preview"),
     path("Catalogocategoria/<int:categoria_id>", views.categoriaDetalle, name="categorias_detalle"),
 
