@@ -97,7 +97,7 @@ def categoriasPreview(request):
     categorias = Categoria.objects.all()
     return render(request, "catalogo/categoriaPreview.html", {"categorias": categorias})
 
-# views.py
+# Para la categoria detalle
 def categoriaDetalle(request, categoria_id):
     categoria = get_object_or_404(Categoria, id=categoria_id)
     libros = categoria.libro_set.all()  # todos los libros de esa categoría
