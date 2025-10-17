@@ -30,7 +30,7 @@ class Usuario(models.Model):
 
     #Metodo especial en python que define como se representara un objeto como cadena __str__ DJANGO lo usa automaticamente en <select>, interfaz del admin, cuando imprimo el objeto autor y cuando lo pongo en una plantilla
     def __str__(self):
-        return self.nombre_completo()    
+        return self.nombre_completo() #LLamo a la funcion   
 
     class Meta:        
         verbose_name='Usuario'
